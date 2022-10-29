@@ -1,10 +1,7 @@
 import { Box, Typography, Button, Modal } from "@mui/material";
 import ButtonBases from "./ButtonBases";
 
-import { useState } from "react";
-import Upload from "../newcomponents/Upload";
-
-const PageFour = () => {
+const InstrumentPage = () => {
   return (
     <Box
       sx={{
@@ -108,4 +105,4 @@ const PageFour = () => {
   );
 };
 
-export default PageFour;
+export default InstrumentPage;

@@ -5,8 +5,7 @@ import ButtonBase from "@mui/material/ButtonBase";
 import Typography from "@mui/material/Typography";
 import { Modal } from "@mui/material";
 
-import Upload from "../newcomponents/Upload";
-
+import Upload from "./Upload";
 import Guitar from "../assets/Guitar.png";
 import Piano from "../assets/Piano.png";
 import Drum from "../assets/Drum.png";

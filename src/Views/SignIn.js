@@ -1,5 +1,6 @@
-import * as React from "react";
 import { useRef, useState } from "react";
+import { useNavigate } from "react-router-dom";
+
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import {
   FormHelperText,
@@ -12,30 +13,35 @@ import {
   Snackbar,
 } from "@mui/material";
 
+import axios from "../utils/axios";
+import { useDispatch } from "react-redux";
+import { setToken } from "../redux/reducers/AuthReducer";
+
 const theme = createTheme();
 
 const SignIn = () => {
   const textRef = useRef([]);
   const [emailError, setEmailError] = useState("");
   const [loginError, setloginError] = useState(false);
-
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const onhandlePost = async (email) => {
-    
-    await axios.post("/account/signIn", {email: email })
+    await axios
+      .post("/user_inform/onLogin", null, { params: { email: email } })
       .then((res) => {
-        localStorage.setItem('Authorization', res.headers.authorization);
-        navigate('/memu');
+        dispatch(setToken(res.data));
+        navigate("/home");
       })
       .catch(() => {
         setloginError(true);
       });
+    // navigate("/menu/side1");
   };
 
   const handleSubmit = () => {
     const email = textRef.current.value;
-    console.log(email);
+
     const emailRegex =
       /([\w-.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
     if (!emailRegex.test(email))
@@ -78,10 +84,12 @@ const SignIn = () => {
           }}
         >
           <Box
-            component="form"
-            // onSubmit={handleSubmit}
-            noValidate
             sx={{ mt: 1, width: 500 }}
+            onKeyPress={(e) => {
+              if (e.key === "Enter") {
+                handleSubmit();
+              }
+            }}
           >
             <h1>Login</h1>
             <TextField
@@ -102,7 +110,6 @@ const SignIn = () => {
             </FormHelperText>
             <Button
               fullWidth
-              // type="submit"
               variant="contained"
               sx={{ mt: 3, mb: 2, height: 50, background: "#3855B3" }}
               onClick={handleSubmit}

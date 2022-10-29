@@ -2,7 +2,7 @@ import { Box, Typography } from "@mui/material";
 
 import score from "../assets/score.jpg";
 
-const PageOne = () => {
+const MainPage = () => {
   return (
     <Box
       sx={{
@@ -49,4 +49,4 @@ const PageOne = () => {
   );
 };
 
-export default PageOne;
+export default MainPage;

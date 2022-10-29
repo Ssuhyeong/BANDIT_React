@@ -2,7 +2,7 @@ import { Box, Typography, Grid } from "@mui/material";
 import score from "../assets/score.jpg";
 import Animation from "./Animation";
 
-const PageThree = () => {
+const SubPage2 = () => {
   return (
     <Box
       sx={{
@@ -44,9 +44,9 @@ const PageThree = () => {
       >
         한번의 업로드로 편하게 다운로드
       </Typography>
-      {/* <Animation /> */}
+      <Animation />
     </Box>
   );
 };
 
-export default PageThree;
+export default SubPage2;

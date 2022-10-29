@@ -3,7 +3,7 @@ import { Box, Typography } from "@mui/material";
 import score from "../assets/score2.png";
 import phone from "../assets/hand.png";
 
-const PageTwo = () => {
+const SubPage1 = () => {
   return (
     <Box
       sx={{
@@ -122,4 +122,4 @@ const PageTwo = () => {
   );
 };
 
-export default PageTwo;
+export default SubPage1;
